@@ -1,7 +1,7 @@
 package ru.itone.course_java.core.base_structures;
 
-import ru.itone.course_java.core.base_structures.geometry.Shape;
-import ru.itone.course_java.core.base_structures.precise.PreciseFloat;
+import ru.itone.course_java.core.base_structures.geometry.*;
+import ru.itone.course_java.core.base_structures.precise.PreciseFloatRecord;
 
 /**
  * Данные методы будут использованы, чтобы получать объекты реализованных вами классов.
@@ -10,22 +10,22 @@ import ru.itone.course_java.core.base_structures.precise.PreciseFloat;
 public class BaseStructures {
 
     public Shape getCircle(float radius) {
-        throw new UnsupportedOperationException();
+        return new Circle(radius);
     }
 
     public Shape getRectangle(float a, float b) {
-        throw new UnsupportedOperationException();
+        return new Rectangle(a, b);
     }
 
     public Shape getSquare(float a) {
-        throw new UnsupportedOperationException();
+        return new Square(a);
     }
 
     public Shape getTriangle(float a, float b, float c) {
-        throw new UnsupportedOperationException();
+        return new Triangle(a, b, c);
     }
 
-    public PreciseFloat getPreciseFloat(int whole, int fractional) {
-        throw new UnsupportedOperationException();
+    public PreciseFloatRecord getPreciseFloat(int whole, int fractional) {
+        return new PreciseFloatRecord(whole, fractional);
     }
 }

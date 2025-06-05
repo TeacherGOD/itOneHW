@@ -46,9 +46,12 @@ class BaseStructuresTest {
 
     @Test
     void getTriangle() {
-        var a = random.nextFloat(1, 100);
-        var b = random.nextFloat(1, 100);
-        var c = random.nextFloat(1, 100);
+        float a,b,c; //Исправил несуществующий треугольник.
+        do {
+            a = random.nextFloat(1, 100);
+            b = random.nextFloat(1, 100);
+            c = random.nextFloat(1, 100);
+        } while (!(a + b > c && a + c > b && b + c > a));
         var triangle = baseStructures.getTriangle(a, b, c);
 
         assertThat(triangle.getShapeType()).isEqualTo(ShapeType.TRIANGLE);

@@ -5,23 +5,21 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public sealed class Rectangle implements Shape permits Square{
-    protected final float width;
-    protected final float height;
+public final class Circle implements Shape{
 
-
+    private final float radius;
     @Override
     public double getArea() {
-        return width*height;
+        return Math.PI*radius*radius;
     }
 
     @Override
     public double getPerimeter() {
-        return 2*(width+height);
+        return Math.PI*2*radius;
     }
 
     @Override
     public ShapeType getShapeType() {
-        return ShapeType.RECTANGLE;
+        return ShapeType.CIRCLE;
     }
 }
