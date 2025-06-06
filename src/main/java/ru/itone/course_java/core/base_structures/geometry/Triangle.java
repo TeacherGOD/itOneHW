@@ -17,7 +17,6 @@ public final class Triangle implements Shape {
         }
         else
             throw new IllegalArgumentException("The triangle("+a+","+b+","+c+") does not exist");
-        //А в тестах может быть несуществующий треугольник, так и живём.
     }
 
     @Override
