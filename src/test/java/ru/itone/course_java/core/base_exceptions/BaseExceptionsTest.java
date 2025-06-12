@@ -143,7 +143,7 @@ class BaseExceptionsTest {
                         .identityDocument(IdentityDocument.builder()
                                 .type(DocType.FOREIGN_PASSPORT)
                                 .code("B")
-                                .number("001122334455")
+                                .number("0011223344")
                                 .issueDate(today().minusDays(1))
                                 .startDate(today())
                                 .expireDate(today().plusYears(10))
@@ -178,7 +178,7 @@ class BaseExceptionsTest {
 
     static Stream<Arguments> checkPerson_InvalidPersonInfo() {
         return Stream.of(
-                Arguments.of(residentPerson().firstName("First1"),
+                Arguments.of(residentPerson().firstName("First1").build(),
                         "ФИО и Дополнительное Имя может состоять только из латиницы, кириллицы, пробела, точки, тире, одинарной кавычки и апострофа, символ 1 не валидный"),
                 Arguments.of(residentPerson().lastName("*Last").build(),
                         "ФИО и Дополнительное Имя может состоять только из латиницы, кириллицы, пробела, точки, тире, одинарной кавычки и апострофа, символ * не валидный"),
@@ -203,7 +203,10 @@ class BaseExceptionsTest {
 
     static Stream<Arguments> checkPerson_InvalidIdentityDocument() {
         return Stream.of(
-                Arguments.of(foreignPerson().build(), "Гражданство и тип паспорта должны совпадать, указано гражданин: Нет, тип паспорта: Внутренний паспорт"),
+                Arguments.of(foreignPerson()
+                        .identityDocument(residentDoc()
+                                .build())
+                        .build(), "Гражданство и тип паспорта должны совпадать, указано гражданин: Нет, тип паспорта: Внутренний паспорт"),
                 Arguments.of(residentPerson()
                         .identityDocument(foreignDoc()
                                 .build())

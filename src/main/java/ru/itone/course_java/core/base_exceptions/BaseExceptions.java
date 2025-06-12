@@ -4,6 +4,7 @@ import ru.itone.course_java.core.base_exceptions.model.DocType;
 import ru.itone.course_java.core.base_exceptions.model.IdentityDocument;
 import ru.itone.course_java.core.base_exceptions.model.Person;
 import ru.itone.course_java.core.base_exceptions.model.Sex;
+import ru.itone.course_java.core.base_exceptions.utils.PersonValidator;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.time.ZoneOffset;
 
 public class BaseExceptions {
 
+    private final PersonValidator personValidator=new PersonValidator();
     //@formatter:off
     /**
      * Реализовать проверку объекта класса {@link Person} по следующим правилам, симулируем работу электронного КПП:
@@ -59,7 +61,7 @@ public class BaseExceptions {
      */
     //@formatter:on
     public void checkPerson(Person person) {
-        throw new UnsupportedOperationException();
+        personValidator.validate(person);
     }
 
     /**
